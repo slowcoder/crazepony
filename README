@@ -1,0 +1,17 @@
+Alternative firmware for the CrazePony MiniQuad quadcopter
+
+Hardware vendors website: http://www.crazepony.com/products/mini.html
+
+This is a "just for fun" project, as the original firmware isn't very tinker-friendly
+due to it relying on Keil uVision (aka, Windows), all the comments in the code is
+in chinese, and not being very easy to follow.
+
+Current status:
+TX is fully operational. It sends a 9-byte packet continously with 250Kbps ESB @ CH2
+to the drone, which contains all axises and button statuses.
+Quad/Drone has most of the hardware working, _except_ the MPU-6050, which is required
+for getting anything remotely close to stable flight.
+
+Be aware, if you flash this firmware, the Quad will start its motors as soon as it gets
+a signal from the TX. They're not going fast enough for fligh, but they're going fast
+enough to hurt.
