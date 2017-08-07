@@ -1,0 +1,15 @@
+stlink:
+	/opt/openocd/bin/openocd \
+	        -f interface/stlink-v2.cfg \
+	        -c "transport select hla_swd" \
+	        -c "set WORKAREASIZE 0x4000" \
+	        -f target/stm32f1x.cfg \
+	        -c init \
+	        -c "reset halt"
+
+
+flashtx: out/app_tx.hex
+	@echo -e "flash banks\nreset halt\nprogram $< verify\nreset run\nexit\n" | nc localhost 4444
+
+flashdrone: out/app_drone.hex
+	@echo -e "flash banks\nreset halt\nprogram $< verify\nreset run\nexit\n" | nc localhost 4444
